@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Page Assistant</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      width: 400px;
+      height: 500px;
+    }
+    .loading-dots:after {
+      content: '.';
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60% { content: '...'; }
+      80%, 100% { content: ''; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="bg-white rounded-lg shadow p-4 h-full flex flex-col">
+    <h1 class="text-xl font-bold mb-4 text-gray-800">Ask about this page</h1>
+    
+    <div class="mb-4 flex-grow flex flex-col">
+      <div id="chat-container" class="flex-grow overflow-y-auto mb-4 space-y-4">
+        <!-- Chat messages will be inserted here -->
+      </div>
+      
+      <div class="relative">
+        <textarea id="question" rows="3" 
+          class="w-full p-3 border rounded-lg pr-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Ask a question..."></textarea>
+        <button id="askButton" 
+          class="absolute right-2 bottom-2 bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition-colors disabled:bg-gray-400">
+          Ask
+        </button>
+      </div>
+    </div>
+
+    <div id="error" class="hidden text-red-500 text-sm mb-2"></div>
+    
+    <div class="text-xs text-gray-500 mt-2">
+      Tips: Try asking specific questions about the page content.
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
